@@ -81,7 +81,7 @@ tasks:
   readme:
     desc: Regenerates README.md file
     cmds:
-      - cmd: magg readme docs/README.md
+      - cmd: magg readme
       - task: cov-badge
 
   serve:
