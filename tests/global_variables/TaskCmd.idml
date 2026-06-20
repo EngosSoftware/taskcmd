@@ -1,0 +1,7 @@
+.vars
+  .A Hello!
+
+.tasks
+
+  .hello
+    .cmd echo {{A}}

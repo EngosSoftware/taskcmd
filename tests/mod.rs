@@ -1,0 +1,14 @@
+mod always_failing_command;
+mod custom_working_dir;
+mod dependency_cycle;
+mod duplicated_command_dir;
+mod duplicated_tasks;
+mod global_variables;
+mod hello_world;
+mod invalid_subtask;
+mod list_tasks;
+mod non_existing_command;
+mod subtasks;
+mod unexpected_command_attribute;
+mod unexpected_definition_node;
+mod unexpected_task_attribute;

@@ -1,0 +1,11 @@
+[package]
+name = "taskcmd"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+idml = "0.6.0"
+petgraph = "0.8.3"
+
+[dev-dependencies]
+cli-assert = "0.1.13-rc.0"
