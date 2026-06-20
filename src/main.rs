@@ -10,13 +10,15 @@
 
 mod command;
 mod errors;
+mod loader;
 mod tasks;
 
+use crate::loader::load_definitions;
 use crate::tasks::Tasks;
 use errors::*;
 
 fn main() -> Result<()> {
-  let definitions = std::fs::read_to_string("TaskCmd.idml").expect("failed to read the task definition file");
+  let definitions = load_definitions()?;
   let tasks = Tasks::new(definitions)?;
   let args = std::env::args().skip(1).collect::<Vec<String>>();
   if args.len() == 1 {
