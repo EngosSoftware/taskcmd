@@ -26,14 +26,23 @@ fn get_shell_command() -> &'static str {
   "/bin/zsh"
 }
 
-/// Returns a shell command specific for the operating system.
 #[cfg(target_os = "linux")]
 fn get_shell_command() -> &'static str {
   "/bin/sh"
+}
+
+#[cfg(target_os = "windows")]
+fn get_shell_command() -> &'static str {
+  "cmd"
 }
 
 /// Returns options required by a shell command.
 #[cfg(unix)]
 fn get_shell_args() -> &'static [&'static str] {
   &["-c"]
+}
+
+#[cfg(target_os = "windows")]
+fn get_shell_args() -> &'static [&'static str] {
+  &["/c"]
 }
