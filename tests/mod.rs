@@ -7,6 +7,7 @@ mod global_variables;
 mod hello_world;
 mod invalid_subtask;
 mod list_tasks;
+mod no_definitions_file;
 mod non_existing_command;
 mod subtasks;
 mod unexpected_command_attribute;
