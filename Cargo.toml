@@ -11,11 +11,6 @@ categories = ["command-line-utilities"]
 edition = "2024"
 license = "MIT OR Apache-2.0"
 exclude = [
-    "rustfmt.toml",
-    "Taskfile.yml",
-    ".github/",
-    ".gitignore",
-    "CODE_OF_CONDUCT.md",
     "manual/"
 ]
 
