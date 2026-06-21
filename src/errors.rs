@@ -13,7 +13,6 @@ pub enum TaskCmdError {
   UnexpectedNode(String),
   ZeroOrOneAttributeAllowed(String),
   MissingDefinitions,
-  MultipleDefinitions(String),
 }
 
 impl std::fmt::Display for TaskCmdError {
@@ -29,7 +28,6 @@ impl std::fmt::Display for TaskCmdError {
         TaskCmdError::UnexpectedNode(name) => format!("Unexpected node: {}", name),
         TaskCmdError::ZeroOrOneAttributeAllowed(name) => format!("At most one attribute '{}' allowed", name),
         TaskCmdError::MissingDefinitions => "Task definitions file is missing or inaccessible".to_string(),
-        TaskCmdError::MultipleDefinitions(files) => format!("Multiple task definitions files found: {}", files),
       }
     )
   }
@@ -67,8 +65,4 @@ pub fn err_zero_or_one_attribute_allowed(name: String) -> TaskCmdError {
 
 pub fn err_definitions_not_found() -> TaskCmdError {
   TaskCmdError::MissingDefinitions
-}
-
-pub fn err_multiple_definitions(files: String) -> TaskCmdError {
-  TaskCmdError::MultipleDefinitions(files)
 }
