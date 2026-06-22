@@ -5,6 +5,6 @@ fn _0001() {
     .failure()
     .code(1)
     .stdout("")
-    .stderr("Error: Unexpected node: parallel\n")
+    .stderr("error: unexpected node: parallel\n")
     .execute();
 }

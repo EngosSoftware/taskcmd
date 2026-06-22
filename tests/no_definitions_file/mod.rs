@@ -6,6 +6,6 @@ fn _0001() {
     .failure()
     .code(1)
     .stdout("")
-    .stderr("Error: Task definitions file is missing or inaccessible\n")
+    .stderr("error: task definitions file is missing or inaccessible\n")
     .execute();
 }

@@ -62,7 +62,9 @@
     .cmd cd manual && mdbook build
 
   .readme
-    .desc Regenerates README.md file
+    .desc Recreates README file
+          Updates the README file taken from the documentation
+          and then recalculates and updates code coverage stats.
     .cmd magg readme
     .task cov-badge
 

@@ -8,9 +8,16 @@
 //!
 //!
 
-use taskcmd::errors::Result;
+use antex::{ColorMode, StyledText, Text};
 use taskcmd::run;
 
-fn main() -> Result<()> {
-  run()
+fn main() {
+  let cm = ColorMode::default();
+  match run() {
+    Ok(()) => {}
+    Err(err) => {
+      eprintln!("{}: {}", Text::new(cm).red().bold().s("error").reset(), err.as_text(cm));
+      std::process::exit(1);
+    }
+  }
 }

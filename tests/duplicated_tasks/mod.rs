@@ -5,6 +5,6 @@ fn _0001() {
     .failure()
     .code(1)
     .stdout("")
-    .stderr("Error: Duplicated task: build\n")
+    .stderr("error: duplicated task: build\n")
     .execute();
 }

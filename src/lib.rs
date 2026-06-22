@@ -6,6 +6,7 @@ pub mod tasks;
 use crate::errors::*;
 use crate::loader::load_definitions;
 use crate::tasks::Tasks;
+use antex::ColorMode;
 
 pub fn run() -> Result<()> {
   let definitions = load_definitions()?;
@@ -16,14 +17,7 @@ pub fn run() -> Result<()> {
     let exit_status = tasks.execute(task_name)?;
     std::process::exit(exit_status.code().unwrap());
   } else {
-    println!("Available tasks:");
-    for (_, task) in &tasks {
-      print!("  {}", task.get_name());
-      if let Some(description) = task.get_description() {
-        print!(" {}", description);
-      }
-      println!();
-    }
+    tasks.list(ColorMode::default());
   }
   Ok(())
 }

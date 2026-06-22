@@ -5,6 +5,6 @@ fn _0001() {
     .failure()
     .code(1)
     .stdout("")
-    .stderr("Error: Dependency cycle for task: uncle\n")
+    .stderr("error: dependency cycle for task: uncle\n")
     .execute();
 }

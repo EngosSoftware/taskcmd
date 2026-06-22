@@ -1,7 +1,11 @@
 .vars
-  .A Hello!
+  .GLOBAL-VARIABLE Hello!
+    .note Global variables may have notes,
+          that are treated as a comment
+          in other file formats.
+          Notes may have multiple lines.
 
 .tasks
 
   .hello
-    .cmd echo {{A}}
+    .cmd echo {{GLOBAL-VARIABLE}}

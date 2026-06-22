@@ -1,5 +1,7 @@
 //! # Definition of result and errors
 
+use antex::{ColorMode, StyledText, Text};
+
 /// Common result type.
 pub type Result<T, E = TaskCmdError> = std::result::Result<T, E>;
 
@@ -15,27 +17,18 @@ pub enum TaskCmdError {
   MissingDefinitions,
 }
 
-impl std::fmt::Display for TaskCmdError {
-  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-    write!(
-      f,
-      "{}",
-      match self {
-        TaskCmdError::SpawnCommandFailed(reason) => format!("Failed to spawn command, reason: {}", reason),
-        TaskCmdError::DuplicatedTask(name) => format!("Duplicated task: {}", name),
-        TaskCmdError::TaskNotFound(name) => format!("Task not found: {}", name),
-        TaskCmdError::DependencyCycle(name) => format!("Dependency cycle for task: {}", name),
-        TaskCmdError::UnexpectedNode(name) => format!("Unexpected node: {}", name),
-        TaskCmdError::ZeroOrOneAttributeAllowed(name) => format!("At most one attribute '{}' allowed", name),
-        TaskCmdError::MissingDefinitions => "Task definitions file is missing or inaccessible".to_string(),
-      }
-    )
-  }
-}
-
-impl std::fmt::Debug for TaskCmdError {
-  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-    write!(f, "{}", self)
+impl TaskCmdError {
+  /// Returns a colored error message.
+  pub fn as_text(&self, cm: ColorMode) -> Text {
+    match self {
+      TaskCmdError::SpawnCommandFailed(reason) => Text::new(cm).s("failed to spawn command, reason: ").cyan().s(reason).reset(),
+      TaskCmdError::DuplicatedTask(name) => Text::new(cm).s("duplicated task: ").cyan().s(name).reset(),
+      TaskCmdError::TaskNotFound(name) => Text::new(cm).s("task not found: ").cyan().s(name).reset(),
+      TaskCmdError::DependencyCycle(name) => Text::new(cm).s("dependency cycle for task: ").cyan().s(name).reset(),
+      TaskCmdError::UnexpectedNode(name) => Text::new(cm).s("unexpected node: ").cyan().s(name).reset(),
+      TaskCmdError::ZeroOrOneAttributeAllowed(name) => Text::new(cm).s("at most one attribute '").cyan().s(name).reset().s("' allowed"),
+      TaskCmdError::MissingDefinitions => Text::new(cm).s("task definitions file is missing or inaccessible"),
+    }
   }
 }
 

@@ -3,6 +3,12 @@
 version = 4
 
 [[package]]
+name = "antex"
+version = "0.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "687780ea2bbba1364204a233437806670f023d79becd25c40abdb2609c6a62ba"
+
+[[package]]
 name = "bitflags"
 version = "2.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -219,6 +225,7 @@ dependencies = [
 name = "taskcmd"
 version = "0.1.1"
 dependencies = [
+ "antex",
  "cli-assert",
  "idml",
  "petgraph",

@@ -1,5 +1,6 @@
 use super::errors::*;
 use crate::command::execute;
+use antex::{ColorMode, StyledText, Text};
 use petgraph::Graph;
 use petgraph::algo::toposort;
 use petgraph::graph::NodeIndex;
@@ -115,6 +116,25 @@ impl Tasks {
     Ok(exit_status)
   }
 
+  /// Displays a list of tasks.
+  pub fn list(&self, cm: ColorMode) {
+    let width = self.tasks.keys().map(|key| key.len()).max().unwrap_or_default();
+    println!("{}", Text::new(cm).bold().underline().s("Available tasks").reset());
+    for task in self.tasks.values() {
+      let name = task.get_name();
+      if let Some(description) = task.get_description() {
+        print!(
+          "  {}  {}",
+          Text::new(cm).bright_green().align_left(name, width).reset(),
+          description.lines().take(1).collect::<String>()
+        );
+      } else {
+        print!("  {}", Text::new(cm).bright_green().s(name).reset());
+      }
+      println!();
+    }
+  }
+
   /// Parses task definitions.
   fn parse_definitions(definitions: String) -> Result<Self> {
     let mut tasks = Tasks {
@@ -124,14 +144,21 @@ impl Tasks {
     let root_node = idml::parse(&definitions).expect("failed to parse the task file");
     for top_level_node in root_node.children() {
       match top_level_node.name() {
-        // Global variables.
+        "note" => {} // Global notes are treated as a comment.
         "vars" => {
+          // Global variables.
           for variable_node in top_level_node.children() {
+            for task_attribute_node in variable_node.children() {
+              match task_attribute_node.name() {
+                "note" => {} // Variable notes are treated as a comment.
+                other => return Err(err_unexpected_node(other.to_string())),
+              }
+            }
             tasks.variables.insert(variable_node.name().to_string(), variable_node.text().to_string());
           }
         }
-        // Task definitions.
         "tasks" => {
+          // Task definitions.
           for task_node in top_level_node.children() {
             let task_name = task_node.name().to_string();
             if tasks.tasks.contains_key(&task_name) {
@@ -140,6 +167,7 @@ impl Tasks {
             let mut task = Task::new(task_name.clone());
             for task_attribute_node in task_node.children() {
               match task_attribute_node.name() {
+                "note" => {} // Task notes are treated as a comment.
                 "desc" => {
                   task.set_description(task_attribute_node.text().to_string());
                 }
@@ -151,6 +179,7 @@ impl Tasks {
                   let mut dir = None;
                   for command_attribute_node in task_attribute_node.children() {
                     match command_attribute_node.name() {
+                      "note" => {} // Command notes are treated as a comment.
                       v @ "dir" if dir.is_some() => return Err(err_zero_or_one_attribute_allowed(v.to_string())),
                       "dir" => dir = Some(command_attribute_node.text().to_string()),
                       other => return Err(err_unexpected_node(other.to_string())),

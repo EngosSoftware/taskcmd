@@ -5,6 +5,6 @@ fn _0001() {
     .failure()
     .code(1)
     .stdout("")
-    .stderr("Error: Task not found: child\n")
+    .stderr("error: task not found: child\n")
     .execute();
 }

@@ -5,6 +5,6 @@ fn _0001() {
     .failure()
     .code(1)
     .stdout("")
-    .stderr("Error: At most one attribute 'dir' allowed\n")
+    .stderr("error: at most one attribute 'dir' allowed\n")
     .execute();
 }

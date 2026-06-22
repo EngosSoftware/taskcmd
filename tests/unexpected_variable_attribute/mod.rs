@@ -5,6 +5,6 @@ fn _0001() {
     .failure()
     .code(1)
     .stdout("")
-    .stderr("error: unexpected node: colored\n")
+    .stderr("error: unexpected node: name\n")
     .execute();
 }

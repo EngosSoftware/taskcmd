@@ -15,6 +15,7 @@ exclude = [
 ]
 
 [dependencies]
+antex = "0.2.3"
 idml = "0.6.0"
 petgraph = "0.8.3"
 

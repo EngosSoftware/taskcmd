@@ -1,10 +1,10 @@
 #[test]
 fn _0001() {
   cli_assert::command!()
-    .arg("hello")
+    .arg("build")
     .failure()
     .code(1)
     .stdout("")
-    .stderr("error: unexpected node: colored\n")
+    .stderr("error: task not found: build\n")
     .execute();
 }

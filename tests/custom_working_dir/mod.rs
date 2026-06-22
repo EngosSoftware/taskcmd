@@ -17,6 +17,6 @@ fn _0002() {
     .failure()
     .code(1)
     .stdout("")
-    .stderr("Error: Failed to spawn command, reason: No such file or directory (os error 2)\n")
+    .stderr("error: failed to spawn command, reason: No such file or directory (os error 2)\n")
     .execute();
 }

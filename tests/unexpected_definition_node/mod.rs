@@ -4,6 +4,6 @@ fn _0001() {
     .failure()
     .code(1)
     .stdout("")
-    .stderr("Error: Unexpected node: description\n")
+    .stderr("error: unexpected node: description\n")
     .execute();
 }
