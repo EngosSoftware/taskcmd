@@ -8,7 +8,7 @@
 //!
 //!
 
-use taskcmd::Result;
+use taskcmd::errors::Result;
 use taskcmd::run;
 
 fn main() -> Result<()> {

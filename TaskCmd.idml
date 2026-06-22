@@ -63,7 +63,7 @@
 
   .readme
     .desc Regenerates README.md file
-    .cmd magg readme docs/README.md
+    .cmd magg readme
     .task cov-badge
 
   .serve

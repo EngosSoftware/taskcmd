@@ -1,11 +1,11 @@
-mod command;
-mod errors;
-mod loader;
-mod tasks;
+pub mod command;
+pub mod errors;
+pub mod loader;
+pub mod tasks;
 
+use crate::errors::*;
 use crate::loader::load_definitions;
 use crate::tasks::Tasks;
-pub use errors::*;
 
 pub fn run() -> Result<()> {
   let definitions = load_definitions()?;
