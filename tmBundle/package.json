@@ -1,7 +1,7 @@
 {
   "name": "taskcmd",
   "version": "1.0.0",
-  "description": "Syntax highlighting rules for task definitions",
+  "description": "Syntax highlighting rules for task definitions.",
   "license": "MIT",
   "contributes": {
     "languages": [
