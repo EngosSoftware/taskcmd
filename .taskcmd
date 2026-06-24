@@ -1,16 +1,16 @@
 .tasks
 
   .build
-    .desc Builds in debug mode
+    .desc Builds task commander in debug mode
     .cmd cargo +stable build
 
   .clean
-    .desc Cleans all targets
+    .desc Cleans all generated artifacts
     .cmd cargo +stable clean
     .cmd rm -rf manual/book
 
   .clippy
-    .desc Runs clippy for all targets
+    .desc Runs linter
     .cmd cargo +stable clippy --all-targets
 
   .cov
@@ -24,12 +24,12 @@
     .cmd cargo +stable llvm-cov --no-cfg-coverage --html
 
   .cov-html-open
-    .desc Generates code coverage report in HTML format
+    .desc Generates code coverage report in HTML format and opens in browser
     .cmd cargo +stable llvm-cov clean
     .cmd cargo +stable llvm-cov --no-cfg-coverage --html --open
 
   .cov-badge
-    .desc Generates the detailed code coverage badge
+    .desc Generates code coverage badge
     .cmd cargo +stable llvm-cov clean
     .cmd cargo +stable llvm-cov --no-cfg-coverage --json --summary-only | coverio -l coverage -c --tag cov-badge
 
@@ -38,7 +38,7 @@
     .cmd cargo +stable doc
 
   .doc-private
-    .desc Generates documentation
+    .desc Generates private documentation
     .cmd cargo +stable doc --document-private-items
 
   .doc-open
@@ -46,7 +46,7 @@
     .cmd cargo +stable doc --open
 
   .doc-private-open
-    .desc Generates documentation and opens in browser
+    .desc Generates private documentation and opens in browser
     .cmd cargo +stable doc --open --document-private-items
 
   .fmt
@@ -54,7 +54,7 @@
     .cmd cargo +nightly fmt
 
   .install
-    .desc Builds and installs release version from local sources
+    .desc Installs task commander from local sources
     .cmd cargo +stable install taskcmd --path . --force
 
   .manual
@@ -69,7 +69,7 @@
     .task cov-badge
 
   .serve
-    .desc Serves the manual locally and rebuilds on changes
+    .desc Serves manual locally
     .cmd cd manual && mdbook serve
 
   .test
@@ -77,9 +77,9 @@
     .cmd cargo +stable test
 
   .testn
-    .desc Runs tests in debug mode
+    .desc Runs tests in debug mode using nextest
     .cmd cargo +stable nextest run
 
   .uninstall
-    .desc Uninstalls previously installed local version
+    .desc Uninstalls previously installed task commander
     .cmd cargo +stable uninstall taskcmd

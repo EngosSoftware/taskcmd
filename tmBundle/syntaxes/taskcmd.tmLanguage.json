@@ -19,7 +19,7 @@
       "match": "(^\\s*\\.)(desc\\s*)(.*)",
       "captures": {
         "2": {
-          "name": "string.taskcmd"
+          "name": "keyword.taskcmd"
         },
         "3": {
           "name": "string.taskcmd"

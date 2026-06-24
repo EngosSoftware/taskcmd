@@ -1,6 +1,6 @@
 [package]
 name = "taskcmd"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Dariusz Depta <depta@engos.de>"]
 description = "Task commander"
 documentation = "https://docs.rs/taskcmd"
@@ -11,7 +11,13 @@ categories = ["command-line-utilities"]
 edition = "2024"
 license = "MIT OR Apache-2.0"
 exclude = [
-    "manual/"
+    ".gitignore",
+    ".taskcmd",
+    "CODE_OF_CONDUCT.md",
+    "rustfmt.toml",
+    "adr",
+    "manual",
+    "tmBundle"
 ]
 
 [dependencies]

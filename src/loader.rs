@@ -9,15 +9,21 @@ use std::fs::{read_dir, read_to_string};
 /// are not reported precisely because such failures are expected to be rare.
 /// This function will just panic if the task definitions file is not accessible.
 pub fn load_definitions() -> Result<String> {
+  let mut files = vec![];
   let paths = read_dir(".").expect("Failed to access current directory");
   for entry in paths.flatten() {
     let file_type = entry.file_type().expect("Failed to get file type");
     if file_type.is_file() {
-      let file_name = entry.file_name();
-      if file_name.eq_ignore_ascii_case("taskcmd.idml") {
-        return Ok(read_to_string(file_name).expect("Failed to read task definitions file"));
+      let file_name = entry.file_name().to_string_lossy().to_string();
+      if file_name.ends_with(".taskcmd") {
+        files.push(file_name);
       }
     }
   }
-  Err(err_definitions_not_found())
+  files.sort();
+  if let Some(file_name) = files.first() {
+    Ok(read_to_string(file_name).expect("Failed to read task definitions file"))
+  } else {
+    Err(err_definitions_not_found())
+  }
 }
