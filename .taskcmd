@@ -37,19 +37,19 @@
 
   .doc
     .desc Generates documentation
-    .cmd cargo +stable doc
-
-  .doc-private
-    .desc Generates private documentation
-    .cmd cargo +stable doc --document-private-items
+    .cmd cargo +stable doc --no-deps
 
   .doc-open
     .desc Generates documentation and opens in browser
-    .cmd cargo +stable doc --open
+    .cmd cargo +stable doc --no-deps --open
+
+  .doc-private
+    .desc Generates private documentation
+    .cmd cargo +stable doc --no-deps --document-private-items
 
   .doc-private-open
     .desc Generates private documentation and opens in browser
-    .cmd cargo +stable doc --open --document-private-items
+    .cmd cargo +stable doc --no-deps --document-private-items --open
 
   .fmt
     .desc Runs code formatter

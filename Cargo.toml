@@ -11,13 +11,14 @@ categories = ["command-line-utilities"]
 edition = "2024"
 license = "MIT OR Apache-2.0"
 include = [
+    "docs/**",
     "src/**",
     "tests/**",
-    "Cargo.toml",
     "Cargo.lock",
-    "/README.md",
+    "Cargo.toml",
     "LICENSE*",
-    "NOTICE"
+    "NOTICE",
+    "/README.md"
 ]
 
 [dependencies]
