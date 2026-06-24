@@ -17,6 +17,7 @@ exclude = [
     "rustfmt.toml",
     "adr",
     "manual",
+    "tests",
     "tmBundle"
 ]
 
