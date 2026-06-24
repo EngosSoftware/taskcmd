@@ -10,15 +10,13 @@ homepage = "https://engossoftware.github.io/taskcmd/"
 categories = ["command-line-utilities"]
 edition = "2024"
 license = "MIT OR Apache-2.0"
-exclude = [
-    ".gitignore",
-    ".taskcmd",
-    "CODE_OF_CONDUCT.md",
-    "rustfmt.toml",
-    "adr",
-    "manual",
-    "tests",
-    "tmBundle"
+include = [
+    "src/**",
+    "Cargo.toml",
+    "Cargo.lock",
+    "/README.md",
+    "LICENSE*",
+    "NOTICE"
 ]
 
 [dependencies]
