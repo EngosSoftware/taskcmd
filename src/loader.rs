@@ -21,6 +21,7 @@ pub fn load_definitions() -> Result<String> {
     }
   }
   files.sort();
+  files.reverse();
   if let Some(file_name) = files.first() {
     Ok(read_to_string(file_name).expect("Failed to read task definitions file"))
   } else {
