@@ -27,4 +27,4 @@ idml = "0.6.0"
 petgraph = "0.8.3"
 
 [dev-dependencies]
-cli-assert = "0.1.13-rc.0"
+cli-assert = "0.1.13"

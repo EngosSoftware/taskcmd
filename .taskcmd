@@ -3,6 +3,14 @@
 
 .tasks
 
+  .all
+    .task clean
+    .task build
+    .task clippy
+    .task test
+    .task doc
+    .task fmt
+
   .build
     .desc Builds task commander in debug mode
     .cmd cargo +stable build
