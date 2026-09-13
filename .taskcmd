@@ -4,6 +4,7 @@
 .tasks
 
   .all
+    .desc Runs all tasks
     .task clean
     .task build
     .task clippy
@@ -81,7 +82,8 @@
 
   .serve
     .desc Serves manual locally
-    .cmd cd manual && mdbook serve
+    .cmd mdbook serve
+      .dir manual
 
   .test
     .desc Runs tests in debug mode
