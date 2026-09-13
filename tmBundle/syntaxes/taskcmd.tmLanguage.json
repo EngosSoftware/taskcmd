@@ -4,31 +4,39 @@
   "patterns": [
     {
       "name": "note.taskcmd",
-      "match": "(^\\s*\\.)(note\\s*)(.*)",
-      "captures": {
+      "begin": "(^\\s*\\.)(note)(?=\\s|$)",
+      "end": "(?=^\\s*\\.)",
+      "beginCaptures": {
         "2": {
           "name": "comment.line.taskcmd"
-        },
-        "3": {
-          "name": "comment.line.taskcmd"
         }
-      }
+      },
+      "contentName": "comment.line.taskcmd",
+      "patterns": [
+        {
+          "include": "#code-inline"
+        }
+      ]
     },
     {
       "name": "description.taskcmd",
-      "match": "(^\\s*\\.)(desc\\s*)(.*)",
-      "captures": {
+      "begin": "(^\\s*\\.)(desc)(?=\\s|$)",
+      "end": "(?=^\\s*\\.)",
+      "beginCaptures": {
         "2": {
           "name": "keyword.taskcmd"
-        },
-        "3": {
-          "name": "string.taskcmd"
         }
-      }
+      },
+      "contentName": "string.taskcmd",
+      "patterns": [
+        {
+          "include": "#code-inline"
+        }
+      ]
     },
     {
       "name": "variable.taskcmd",
-      "match": "(^\\s*\\.)([A-Z_]+)",
+      "match": "(^\\s*\\.)([A-Z_-]+)",
       "captures": {
         "2": {
           "name": "constant.other.taskcmd"
@@ -53,5 +61,22 @@
         }
       }
     }
-  ]
+  ],
+  "repository": {
+    "code-inline": {
+      "name": "code.inline.taskcmd",
+      "match": "(`)([^`]*)(`)",
+      "captures": {
+        "1": {
+          "name": "punctuation.taskcmd"
+        },
+        "2": {
+          "name": "constant.numeric.taskcmd"
+        },
+        "3": {
+          "name": "punctuation.taskcmd"
+        }
+      }
+    }
+  }
 }
